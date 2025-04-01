@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
@@ -9,49 +10,64 @@ public class Unit : MonoBehaviour
     [SerializeField] private float DEF;
     [SerializeField] private float movSPD = 2f;
     [SerializeField] private float atkSPD = 1f;
+    [SerializeField] private float detectionRange = 1.5f;
+
+    private NavMeshAgent agent;
     private bool isEnemy;
+
     public bool IsEnemy
     {
-        get
-        {
-            return isEnemy;
-        }
-        set
-        {
-            isEnemy = value;
-        }
+        get { return isEnemy; }
+        set { isEnemy = value; }
     }
-    [SerializeField] private float detectionRange;
 
     [SerializeField] private Unit currentTarget;
 
     void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = movSPD;
+        agent.stoppingDistance = detectionRange;
     }
+
+    void Start()
+    {
+
+    }
+
     void Update()
     {
+        if (!agent.isOnNavMesh)
+        {
+            Debug.LogWarning($"{gameObject.name} is NOT on the NavMesh!");
+            return;
+        }
+
         if (currentTarget == null || currentTarget.HP <= 0)
         {
             currentTarget = FindClosestEnemy();
-            Debug.Log("target found");
-        }
 
-        if (currentTarget != null)
+            if (currentTarget != null)
+            {
+                Debug.Log($"{gameObject.name} found target: {currentTarget.gameObject.name}");
+                agent.SetDestination(currentTarget.transform.position);
+            }
+        }
+        else
         {
             float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
 
             if (distance > detectionRange)
             {
-                Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
-                transform.position += direction * movSPD * Time.deltaTime;
-                Debug.Log("moving");
+                agent.SetDestination(currentTarget.transform.position);
             }
             else
             {
-
+                agent.ResetPath();
             }
         }
     }
+
 
     Unit FindClosestEnemy()
     {
@@ -62,20 +78,17 @@ public class Unit : MonoBehaviour
         foreach (GameObject obj in allUnits)
         {
             Unit unit = obj.GetComponent<Unit>();
-            Debug.Log("" + unit.IsEnemy + "" + this.IsEnemy);
-            if (unit.IsEnemy == this.IsEnemy || unit.HP <= 0)
+
+            if (unit == null || unit == this || unit.IsEnemy == this.IsEnemy || unit.HP <= 0)
                 continue;
 
-            Debug.Log("inside foreach");
             float dist = Vector3.Distance(transform.position, unit.transform.position);
-            Debug.Log(dist);
-
-
-            closestDist = dist;
-            closest = unit;
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                closest = unit;
+            }
         }
-
-        Debug.Log(closest);
 
         return closest;
     }

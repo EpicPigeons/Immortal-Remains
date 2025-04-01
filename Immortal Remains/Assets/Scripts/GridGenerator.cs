@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GridGenerator : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] private Material blackMat;
     private List<Cell> allCells;
     private GameManager gameManager;
+    [SerializeField] private NavMeshSurface navSurface;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class GridGenerator : MonoBehaviour
     void Start()
     {
         GenerateGrid();
+        navSurface.BuildNavMesh();
         gameManager = FindObjectOfType<GameManager>();
         gameManager.AllCells = allCells.ToArray();
         gameManager.EnemySpawnManager();

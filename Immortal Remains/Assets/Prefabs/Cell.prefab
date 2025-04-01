@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5027476045959789779}
   - component: {fileID: 2476056012382537478}
   - component: {fileID: 8815515495572023903}
-  - component: {fileID: 4476710606258727014}
   - component: {fileID: 3050687217741965211}
   - component: {fileID: -3769253587997083993}
+  - component: {fileID: 4284731842959800929}
   m_Layer: 3
   m_Name: Cell
   m_TagString: Cell
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 35
+  m_VersionIndex: 38
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -324,14 +324,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &4476710606258727014
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7918740387571993081}
-  m_Mesh: {fileID: 0}
 --- !u!64 &3050687217741965211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -367,3 +359,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasUnit: 0
+--- !u!33 &4284731842959800929
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918740387571993081}
+  m_Mesh: {fileID: 0}

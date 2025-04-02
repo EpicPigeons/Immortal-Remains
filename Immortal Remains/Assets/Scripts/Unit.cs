@@ -125,6 +125,10 @@ public class Unit : MonoBehaviour
     {
         currentHP -= amount;
         Debug.Log($"took damage");
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateUnitHealthUI(currentHP, HP);
+        }
         if (currentHP <= 0)
         {
             Debug.Log("DEADGE");

@@ -361,11 +361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
-  ATK: 0
+  ATK: 15
   DEF: 0
   movSPD: 1.5
-  atkSPD: 0
-  detectionRange: 1
+  atkSPD: 1
+  detectionRange: 3
   currentTarget: {fileID: 0}
 --- !u!54 &2978161470996392583
 Rigidbody:
@@ -411,7 +411,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 261268517996718867}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -421,6 +421,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

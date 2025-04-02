@@ -14,7 +14,7 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] private Material whiteMat;
     [SerializeField] private Material blackMat;
     private List<Cell> allCells;
-    private GameManager gameManager;
+    private GameManager gm;
     [SerializeField] private NavMeshSurface navSurface;
 
     void Awake()
@@ -27,9 +27,9 @@ public class GridGenerator : MonoBehaviour
     {
         GenerateGrid();
         navSurface.BuildNavMesh();
-        gameManager = FindObjectOfType<GameManager>();
-        gameManager.AllCells = allCells.ToArray();
-        gameManager.EnemySpawnManager();
+        gm = FindObjectOfType<GameManager>();
+        gm.AllCells = allCells.ToArray();
+        gm.EnemySpawnManager();
     }
 
     private void GenerateGrid()

@@ -11,9 +11,13 @@ public class Unit : MonoBehaviour
     [SerializeField] private float movSPD = 2f;
     [SerializeField] private float atkSPD = 1f;
     [SerializeField] private float detectionRange = 1.5f;
+    private float currentHP;
 
     private NavMeshAgent agent;
     private bool isEnemy;
+    private float attackCooldown;
+    private NavMeshObstacle obstacle;
+
 
     public bool IsEnemy
     {
@@ -28,11 +32,9 @@ public class Unit : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = movSPD;
         agent.stoppingDistance = detectionRange;
-    }
-
-    void Start()
-    {
-
+        agent.updateRotation = false;
+        
+        currentHP = HP;
     }
 
     void Update()
@@ -43,13 +45,14 @@ public class Unit : MonoBehaviour
             return;
         }
 
+        attackCooldown -= Time.deltaTime;
+
         if (currentTarget == null || currentTarget.HP <= 0)
         {
             currentTarget = FindClosestEnemy();
 
             if (currentTarget != null)
             {
-                Debug.Log($"{gameObject.name} found target: {currentTarget.gameObject.name}");
                 agent.SetDestination(currentTarget.transform.position);
             }
         }
@@ -64,10 +67,35 @@ public class Unit : MonoBehaviour
             else
             {
                 agent.ResetPath();
+
+                if (attackCooldown <= 0f)
+                {
+                    StartCoroutine(Shake(0.15f, 0.05f));
+                    currentTarget.TakeDamage(ATK);
+                    attackCooldown = 1f / atkSPD;
+                }
             }
         }
     }
 
+    IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPos = transform.localPosition;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * magnitude;
+            float offsetZ = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = originalPos + new Vector3(offsetX, 0, offsetZ);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
+    }
 
     Unit FindClosestEnemy()
     {
@@ -95,9 +123,11 @@ public class Unit : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        HP -= amount;
-        if (HP <= 0)
+        currentHP -= amount;
+        Debug.Log($"took damage");
+        if (currentHP <= 0)
         {
+            Debug.Log("DEADGE");
             Destroy(gameObject);
         }
     }

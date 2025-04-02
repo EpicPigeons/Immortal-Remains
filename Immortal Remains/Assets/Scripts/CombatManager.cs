@@ -10,6 +10,11 @@ public class CombatManager : MonoBehaviour
         
     }
 
+    void Attack()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {

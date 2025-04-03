@@ -360,16 +360,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a81e32c0066d4c8ac608306db42cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  ATK: 0
-  DEF: 0
+  hp: 1000
+  atk: 0
+  def: 0
   movSPD: 1.5
   atkSPD: 1
-  range: 3
+  range: 1.5
   projectilePrefab: {fileID: 1624259566161661995, guid: 62a7472523e9d444591186ffc2b92b1d, type: 3}
   projectileSpawnPoint: {fileID: 0}
-  isRanged: 1
-  swordPrefab: {fileID: 0}
+  isMelee: 0
   currentTarget: {fileID: 0}
 --- !u!54 &2978161470996392583
 Rigidbody:

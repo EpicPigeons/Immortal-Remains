@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    private Unit attackerUnit;
+    private Unit defenderUnit;
     private GameManager gm;
     // Start is called before the first frame update
     void Start()

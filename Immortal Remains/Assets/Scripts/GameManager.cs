@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         }
     }
     [SerializeField] private int partySize;
+    public int PartySize { get { return partySize; } set { partySize = value; } }
     private int unitCount;
     public int UnitCount
     {

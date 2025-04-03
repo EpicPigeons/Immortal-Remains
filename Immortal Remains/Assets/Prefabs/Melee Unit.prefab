@@ -304,7 +304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f85ff5d6d93a9cc418b9c8c9e65878a7, type: 2}
+  - {fileID: 2100000, guid: aa4c6ce2ca77ba1468d5acc5e81e80d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,11 +361,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
-  ATK: 10
+  ATK: 0
   DEF: 0
   movSPD: 1
   atkSPD: 2
-  detectionRange: 1
+  range: 1
+  projectilePrefab: {fileID: 1624259566161661995, guid: 62a7472523e9d444591186ffc2b92b1d, type: 3}
+  projectileSpawnPoint: {fileID: 0}
+  isRanged: 0
+  swordPrefab: {fileID: 7341513936735204591, guid: f3ee0ae7cf094824d8cc4042df91886c, type: 3}
   currentTarget: {fileID: 0}
 --- !u!54 &-4573647832474696961
 Rigidbody:

@@ -95,8 +95,7 @@ public class GameManager : MonoBehaviour
             allCells = value;
         }
     }
-    // Start is called before the first frame update
-
+    // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
     void Awake()
     {
         currentUnitPrefab = rangedUnit;

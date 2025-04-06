@@ -21,8 +21,10 @@ public class SpawnManager : MonoBehaviour
             if (spawn && !cell.HasUnit)
             {
                 gm.CurrentUnitPrefab.GetComponent<Renderer>().material = gm.AllyMaterial;
-                cell.SpawnUnit(gm.CurrentUnitPrefab, false);
+                GameObject spawnedUnit = cell.SpawnUnit(gm.CurrentUnitPrefab, false);
                 gm.UnitCount++;
+                Unit unitComponent = spawnedUnit.GetComponent<Unit>();
+                CanvasGenerator.Instance.CreateUnitUI(unitComponent);
             }
             else if (!spawn && cell.HasUnit)
             {

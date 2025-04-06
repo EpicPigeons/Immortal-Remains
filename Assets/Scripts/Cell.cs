@@ -40,10 +40,9 @@ public class Cell : MonoBehaviour
         }
     }
 
-
-    public void SpawnUnit(GameObject prefab, bool isEnemy)
+    public GameObject SpawnUnit(GameObject prefab, bool isEnemy)
     {
-        if (hasUnit) return;
+        if (hasUnit) return null; 
 
         Bounds bounds = GetComponent<Collider>().bounds;
         Vector3 spawnPosition = new Vector3(
@@ -53,8 +52,13 @@ public class Cell : MonoBehaviour
         );
 
         currentUnit = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        currentUnit.GetComponent<Unit>().IsEnemy = isEnemy;
+        Unit unitComponent = currentUnit.GetComponent<Unit>();
+        if(unitComponent != null)
+        {
+            unitComponent.IsEnemy = isEnemy;
+        }
         hasUnit = true;
+        return currentUnit;
     }
 
     public void RemoveUnit()

@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI unitNumberText;
 
-    [SerializeField] private TextMeshProUGUI unitHealthText;
-
     private int currentUnitNumber = 0;
     private int maximumUnitNumber = 0;
 
@@ -66,13 +64,13 @@ public class UIManager : MonoBehaviour
         currentUnitNumber = 0;
     }
 
-    public void UpdateUnitHealthUI(float currentHealth, float maxHealth)
+    /*public void UpdateUnitHealthUI(float currentHealth, float maxHealth)
     {
         if (unitHealthText != null)
         {
             unitHealthText.text = $"{currentHealth} / {maxHealth}";
         }
-    }
+    }*/
 
     public void playButtonClicked()
     {

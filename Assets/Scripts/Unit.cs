@@ -7,26 +7,37 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private float hp = 1000;
     public float HP { get { return hp; } set { hp = value; } }
+
     [SerializeField] private float atk;
     public float ATK { get { return atk; } set { atk = value; } }
+
     [SerializeField] private float def;
     public float DEF { get { return def; } set { def = value; } }
+
     [SerializeField] private float movSPD = 2f;
     public float MovSPD { get { return movSPD; } set { movSPD = value; } }
+
     [SerializeField] private float atkSPD = 1f;
     public float AtkSPD { get { return atkSPD; } set { atkSPD = value; } }
+
     [SerializeField] private float range = 1.5f;
     public float Range { get { return range; } set { range = value; } }
+
     private float currentHP;
+    public float CurrentHP { get { return currentHP; }}
     private float ratio = 100;
 
     private NavMeshAgent agent;
     public NavMeshAgent Agent { get { return agent; } set { agent = value; } }
+
     private float attackCooldown;
     public float AttackCooldown { get { return attackCooldown; } set { attackCooldown = value; } }
+
     private NavMeshObstacle obstacle;
+
     private bool isEnemy;
     public bool IsEnemy { get { return isEnemy; } set { isEnemy = value; } }
+
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint; // Optional, where the projectile comes from
     [SerializeField] private bool isMelee;
@@ -166,7 +177,7 @@ public class Unit : MonoBehaviour
         Debug.Log($"took damage");
         if (UIManager.Instance != null)
         {
-            UIManager.Instance.UpdateUnitHealthUI(currentHP, HP);
+            //UIManager.Instance.UpdateUnitHealthUI(currentHP, HP);
         }
         if (currentHP <= 0)
         {

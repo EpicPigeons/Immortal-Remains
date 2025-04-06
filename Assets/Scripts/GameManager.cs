@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     private Cell[] allCells;
     [SerializeField] private SpawnManager spawnManager;
     public Cell[] AllCells { get { return allCells; } set { allCells = value; } }
+
+    [SerializeField] private GameObject[] unitTypes;
+    private int unitNum = 0;
+
     // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
     void Awake()
     {
@@ -42,16 +46,13 @@ public class GameManager : MonoBehaviour
 
     void ToggleUnitType()
     {
-        if (currentUnitPrefab == rangedUnit)
+        unitNum++;
+        if(unitNum == unitTypes.Length)
         {
-            currentUnitPrefab = meleeUnit;
-            Debug.Log("Changed to Melee Unit");
+            unitNum = 0;
         }
-        else
-        {
-            currentUnitPrefab = rangedUnit;
-            Debug.Log("Changed to Ranged Unit");
-        }
+        currentUnitPrefab = unitTypes[unitNum];
+        Debug.Log("Changed to Next Unit");
     }
 
     // Update is called once per frame

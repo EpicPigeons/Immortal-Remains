@@ -18,6 +18,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private float range = 1.5f;
     public float Range { get { return range; } set { range = value; } }
     private float currentHP;
+    private float ratio = 100;
 
     private NavMeshAgent agent;
     public NavMeshAgent Agent { get { return agent; } set { agent = value; } }
@@ -29,6 +30,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint; // Optional, where the projectile comes from
     [SerializeField] private bool isMelee;
+    [SerializeField] private bool isSupport;
     [SerializeField] private Unit currentTarget;
 
     void Awake()
@@ -60,11 +62,19 @@ public class Unit : MonoBehaviour
 
         if (currentTarget == null || currentTarget.HP <= 0)
         {
-            currentTarget = FindClosestEnemy();
+            if(isSupport == true)
+            {
+                currentTarget = FindClosestAlly();
+            }
+            else
+            {
+                currentTarget = FindClosestEnemy();
+            }
 
             if (currentTarget != null)
             {
                 agent.SetDestination(currentTarget.transform.position);
+                agent.transform.LookAt(currentTarget.transform.position); //look at target
             }
         }
         else
@@ -152,7 +162,7 @@ public class Unit : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        currentHP -= amount;
+        currentHP -= ( amount * ( 1 - def / ratio ) );
         Debug.Log($"took damage");
         if (UIManager.Instance != null)
         {
@@ -163,5 +173,29 @@ public class Unit : MonoBehaviour
             Debug.Log("DEADGE");
             Destroy(gameObject);
         }
+    }
+
+    Unit FindClosestAlly()
+    {
+        GameObject[] allUnits = GameObject.FindGameObjectsWithTag("Unit");
+        Unit closest = null;
+        float closestDist = Mathf.Infinity;
+
+        foreach (GameObject obj in allUnits)
+        {
+            Unit unit = obj.GetComponent<Unit>();
+
+            if (unit == null || unit == this || unit.IsEnemy != this.IsEnemy || unit.HP <= 0)
+                continue;
+
+            float dist = Vector3.Distance(transform.position, unit.transform.position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                closest = unit;
+            }
+        }
+
+        return closest;
     }
 }

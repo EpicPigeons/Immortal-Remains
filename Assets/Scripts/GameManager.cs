@@ -25,10 +25,34 @@ public class GameManager : MonoBehaviour
     private Cell[] allCells;
     [SerializeField] private SpawnManager spawnManager;
     public Cell[] AllCells { get { return allCells; } set { allCells = value; } }
+<<<<<<< Updated upstream
     // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
     void Awake()
     {
         currentUnitPrefab = rangedUnit;
+=======
+
+    [SerializeField] private GameObject[] unitTypes;
+    public GameObject[] UnitTypes { get { return unitTypes; } set { unitTypes = value; } }
+    [SerializeField] private GameObject[] enemyUnitTypes;
+    public GameObject[] EnemyUnitTypes { get { return enemyUnitTypes; } set { enemyUnitTypes = value; } }
+    private int unitNum = 0;
+    [SerializeField] private GameObject meleeUnit;
+    [SerializeField] private GameObject rangedUnit;
+    [SerializeField] private GameObject tankUnit;
+    [SerializeField] private GameObject healerUnit;
+    [SerializeField] private GameObject enemyMeleeUnit;
+    [SerializeField] private GameObject enemyRangedUnit;
+    [SerializeField] private GameObject enemyTankUnit;
+    [SerializeField] private GameObject enemyHealerUnit;
+
+    // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
+    void Awake()
+    {
+        unitTypes = new GameObject[] { meleeUnit, rangedUnit, tankUnit, healerUnit };
+        enemyUnitTypes = new GameObject[] { enemyMeleeUnit, enemyRangedUnit, enemyTankUnit, enemyHealerUnit };
+        currentUnitPrefab = unitTypes[0];
+>>>>>>> Stashed changes
         unitCount = 0;
     }
     void Start()
@@ -42,7 +66,12 @@ public class GameManager : MonoBehaviour
 
     void ToggleUnitType()
     {
+<<<<<<< Updated upstream
         if (currentUnitPrefab == rangedUnit)
+=======
+        unitNum++;
+        if (unitNum == unitTypes.Length)
+>>>>>>> Stashed changes
         {
             currentUnitPrefab = meleeUnit;
             Debug.Log("Changed to Melee Unit");

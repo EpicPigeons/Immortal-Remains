@@ -251,7 +251,11 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
+<<<<<<< Updated upstream
   m_VersionIndex: 23
+=======
+  m_VersionIndex: 32
+>>>>>>> Stashed changes
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -369,6 +373,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1624259566161661995, guid: 62a7472523e9d444591186ffc2b92b1d, type: 3}
   projectileSpawnPoint: {fileID: 0}
   isMelee: 0
+  isSupport: 0
   currentTarget: {fileID: 0}
 --- !u!54 &2978161470996392583
 Rigidbody:

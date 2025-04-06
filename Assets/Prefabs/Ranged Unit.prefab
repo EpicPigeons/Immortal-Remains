@@ -251,11 +251,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-<<<<<<< Updated upstream
-  m_VersionIndex: 23
-=======
   m_VersionIndex: 32
->>>>>>> Stashed changes
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject rangedUnit;
-    public GameObject RangedUnit { get { return rangedUnit; } }
-    [SerializeField] private GameObject meleeUnit;
-    public GameObject MeleeUnit { get { return meleeUnit; } }
     [SerializeField] private LayerMask cellLayer;
     public LayerMask CellLayer { get { return cellLayer; } }
     [SerializeField] private Material allyMaterial;
@@ -25,12 +21,6 @@ public class GameManager : MonoBehaviour
     private Cell[] allCells;
     [SerializeField] private SpawnManager spawnManager;
     public Cell[] AllCells { get { return allCells; } set { allCells = value; } }
-<<<<<<< Updated upstream
-    // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
-    void Awake()
-    {
-        currentUnitPrefab = rangedUnit;
-=======
 
     [SerializeField] private GameObject[] unitTypes;
     public GameObject[] UnitTypes { get { return unitTypes; } set { unitTypes = value; } }
@@ -52,7 +42,6 @@ public class GameManager : MonoBehaviour
         unitTypes = new GameObject[] { meleeUnit, rangedUnit, tankUnit, healerUnit };
         enemyUnitTypes = new GameObject[] { enemyMeleeUnit, enemyRangedUnit, enemyTankUnit, enemyHealerUnit };
         currentUnitPrefab = unitTypes[0];
->>>>>>> Stashed changes
         unitCount = 0;
     }
     void Start()
@@ -66,12 +55,8 @@ public class GameManager : MonoBehaviour
 
     void ToggleUnitType()
     {
-<<<<<<< Updated upstream
-        if (currentUnitPrefab == rangedUnit)
-=======
         unitNum++;
         if (unitNum == unitTypes.Length)
->>>>>>> Stashed changes
         {
             currentUnitPrefab = meleeUnit;
             Debug.Log("Changed to Melee Unit");

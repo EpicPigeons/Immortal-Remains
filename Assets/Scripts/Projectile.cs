@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
 
         // Optional: rotate to face target
-        transform.LookAt(target.transform);
+        transform.LookAt(target.transform.position);
 
         // Hit check
         float distance = Vector3.Distance(transform.position, target.transform.position);

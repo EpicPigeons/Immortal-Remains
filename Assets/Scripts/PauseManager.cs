@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance { get; set; }
-    public bool IsPaused { get; set; } = false;
+    public bool IsPaused { get; set; } = true;
     
     private void Awake()
     {

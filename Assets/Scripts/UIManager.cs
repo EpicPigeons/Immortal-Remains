@@ -2,38 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.SceneManagement;
-
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private Button pauseButton;
-
     [SerializeField] private TextMeshProUGUI unitNumberText;
-
-    private int currentUnitNumber = 0;
-    private int maximumUnitNumber = 0;
+    [SerializeField] private int maximumUnitNumber = 5;
+    public int currentUnitNumber;
 
     private GameManager gameManager;
-
     public static UIManager Instance;
-
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
-        Button pbtn = pauseButton.GetComponent<Button>();
-        pbtn.onClick.AddListener(pauseButtonClicked);
-
-        Button plbtn = playButton.GetComponent<Button>();
-        plbtn.onClick.AddListener(playButtonClicked);
+        if (playButton != null)
+            playButton.onClick.AddListener(ResumeGame);
+        if (pauseButton != null)
+            pauseButton.onClick.AddListener(PauseGame);
 
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
@@ -42,54 +37,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        unitNumberText.text = string.Format("Number of Unit: {0} / {1}", currentUnitNumber, maximumUnitNumber);
+        if (gameManager != null)
+        {
+            currentUnitNumber = gameManager.UnitCount;
+            if (unitNumberText != null)
+            {
+                unitNumberText.text = string.Format("Number of Unit: {0} / {1}", currentUnitNumber, maximumUnitNumber);
+            }
+        }
     }
 
-    public void IncreaseUnitCount()
+    public void ResumeGame()
     {
-        if (currentUnitNumber < maximumUnitNumber)
-        {
-            currentUnitNumber++;
-        }
+        Debug.Log("Resuming game");
+        if (PauseManager.Instance != null)
+            PauseManager.Instance.SetPaused(false);
         else
-        {
-            Debug.Log("Unit limit reached!");
-        }
+            Debug.LogWarning("PauseManager instance is missing");
     }
 
-    public void ResetUnitCount()
+    public void PauseGame()
     {
-        currentUnitNumber = 0;
-    }
-
-    /*public void UpdateUnitHealthUI(float currentHealth, float maxHealth)
-    {
-        if (unitHealthText != null)
-        {
-            unitHealthText.text = $"{currentHealth} / {maxHealth}";
-        }
-    }*/
-
-    public void playButtonClicked()
-    {
-        Debug.Log("play Pressed");
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    public void pauseButtonClicked()
-    {
-        Debug.Log("pause Pressed");
-        if (Time.timeScale == 1f)
-        {
-            Time.timeScale = 0f;
-            Debug.Log("Game is paused.");
-        }
+        Debug.Log("Pausing game");
+        if (PauseManager.Instance != null)
+            PauseManager.Instance.SetPaused(true);
         else
-        {
-            Time.timeScale = 1f;
-            Debug.Log("Game is resumed.");
-        }
+            Debug.LogWarning("PauseManager instance is missing");
     }
 }

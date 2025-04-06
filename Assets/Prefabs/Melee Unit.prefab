@@ -304,7 +304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f85ff5d6d93a9cc418b9c8c9e65878a7, type: 2}
+  - {fileID: 2100000, guid: aa4c6ce2ca77ba1468d5acc5e81e80d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
   isMelee: 1
+  isSupport: 0
   currentTarget: {fileID: 0}
 --- !u!54 &-4573647832474696961
 Rigidbody:

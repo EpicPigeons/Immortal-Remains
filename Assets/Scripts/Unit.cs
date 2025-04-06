@@ -181,9 +181,15 @@ public class Unit : MonoBehaviour
         }
         if (currentHP <= 0)
         {
-            Debug.Log("DEADGE");
-            Destroy(gameObject);
+            UnitDestroy();
         }
+    }
+
+    public void UnitDestroy()
+    {
+        Debug.Log("DEADGE");
+        Destroy(gameObject);
+        UIManager.Instance.currentUnitNumber--;
     }
 
     Unit FindClosestAlly()

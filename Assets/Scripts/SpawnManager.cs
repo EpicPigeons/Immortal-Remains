@@ -21,9 +21,9 @@ public class SpawnManager : MonoBehaviour
             if (spawn && !cell.HasUnit)
             {
                 gm.CurrentUnitPrefab.GetComponent<Renderer>().material = gm.AllyMaterial;
-                GameObject spawnedUnit = cell.SpawnUnit(gm.CurrentUnitPrefab, false);
+                GameObject spawnedAlliedUnit = cell.SpawnUnit(gm.CurrentUnitPrefab, false);
                 gm.UnitCount++;
-                Unit unitComponent = spawnedUnit.GetComponent<Unit>();
+                Unit unitComponent = spawnedAlliedUnit.GetComponent<Unit>();
                 CanvasGenerator.Instance.CreateUnitUI(unitComponent);
             }
             else if (!spawn && cell.HasUnit)
@@ -62,11 +62,12 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            GameObject spawnedUnit = gm.UnitTypes[Mathf.RoundToInt(Random.Range(0, gm.UnitTypes.Length))];
+            int randomIndex = Random.Range(0, gm.UnitTypes.Length);
+            GameObject spawnedEnemyUnit = gm.UnitTypes[randomIndex];
             
-            spawnedUnit.GetComponent<Renderer>().material = gm.EnemyMaterial;
+            spawnedEnemyUnit.GetComponent<Renderer>().material = gm.EnemyMaterial;
 
-            enemyCells[i].SpawnUnit(spawnedUnit, true);
+            enemyCells[i].SpawnUnit(spawnedEnemyUnit, true);
         }
 
         Debug.Log($"Spawned {spawnCount} enemy units.");

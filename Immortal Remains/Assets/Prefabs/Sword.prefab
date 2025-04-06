@@ -1026,7 +1026,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3605707592164484729}
   - component: {fileID: 4011861754813836105}
-  - component: {fileID: 6841840835582687693}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1156,21 +1155,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &6841840835582687693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341513936735204591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844b376a132c258499c40b1bde2c1cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swingSpeed: 360
-  swingAngle: 120
-  duration: 0.3
 --- !u!1 &8435594318611438359
 GameObject:
   m_ObjectHideFlags: 0

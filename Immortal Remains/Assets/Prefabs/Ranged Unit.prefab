@@ -365,7 +365,7 @@ MonoBehaviour:
   def: 0
   movSPD: 1.5
   atkSPD: 1
-  range: 1.5
+  range: 3
   projectilePrefab: {fileID: 1624259566161661995, guid: 62a7472523e9d444591186ffc2b92b1d, type: 3}
   projectileSpawnPoint: {fileID: 0}
   isMelee: 0

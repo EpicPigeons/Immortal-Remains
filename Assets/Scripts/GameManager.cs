@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject rangedUnit;
-    public GameObject RangedUnit { get { return rangedUnit; } }
-    [SerializeField] private GameObject meleeUnit;
-    public GameObject MeleeUnit { get { return meleeUnit; } }
     [SerializeField] private LayerMask cellLayer;
     public LayerMask CellLayer { get { return cellLayer; } }
     [SerializeField] private Material allyMaterial;
@@ -27,12 +23,13 @@ public class GameManager : MonoBehaviour
     public Cell[] AllCells { get { return allCells; } set { allCells = value; } }
 
     [SerializeField] private GameObject[] unitTypes;
+    public GameObject[] UnitTypes { get { return unitTypes; } set { unitTypes = value; } }
     private int unitNum = 0;
 
     // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
     void Awake()
     {
-        currentUnitPrefab = rangedUnit;
+        currentUnitPrefab = unitTypes[0];
         unitCount = 0;
     }
     void Start()

@@ -60,8 +60,8 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            GameObject spawnedUnit = Random.value < 0.5f ? gm.MeleeUnit : gm.RangedUnit;
-
+            GameObject spawnedUnit = gm.UnitTypes[Mathf.RoundToInt(Random.Range(0, gm.UnitTypes.Length))];
+            
             spawnedUnit.GetComponent<Renderer>().material = gm.EnemyMaterial;
 
             enemyCells[i].SpawnUnit(spawnedUnit, true);

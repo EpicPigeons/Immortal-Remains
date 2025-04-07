@@ -477,7 +477,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
   isMelee: 1
+  isSupport: 0
   currentTarget: {fileID: 0}
+  isUICreated: 0
 --- !u!195 &-4071574318307927636
 NavMeshAgent:
   m_ObjectHideFlags: 0

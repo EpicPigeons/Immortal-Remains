@@ -1497,6 +1497,15 @@ MonoBehaviour:
   - {fileID: 3765982895194361149, guid: e24a9d0a87230da47b5d794b399b4020, type: 3}
   - {fileID: 261268517996718867, guid: 62ddb59ec4514904abb9e47e08cd2fb3, type: 3}
   - {fileID: 1227072291804684704, guid: 420c911abf2d7af43924b0a50c6088c3, type: 3}
+  enemyUnitTypes: []
+  meleeUnit: {fileID: 1538407554156714, guid: de8a96b4b9b19e74782c5bbf4e8cdbb5, type: 3}
+  rangedUnit: {fileID: 1430682043930404, guid: 51db6c33a260ae44bbc0a6055c8700b5, type: 3}
+  tankUnit: {fileID: 1562622190837322, guid: ab4ef9f64a63fc84b817b464149b816e, type: 3}
+  healerUnit: {fileID: 1239270685352430, guid: f650d06fa1fc743499b4fa91b17f9f19, type: 3}
+  enemyMeleeUnit: {fileID: 1233361812545480, guid: 08f87452ee650c8479242224174bfa8c, type: 3}
+  enemyRangedUnit: {fileID: 1633224609000294, guid: 4c3f2e449522fe64eb64cd3476aed4ad, type: 3}
+  enemyTankUnit: {fileID: 1716085140368864, guid: b2d97ba7bf4f56f45b85157b2b7eafba, type: 3}
+  enemyHealerUnit: {fileID: 1353652469814562, guid: ba22bfa18461d9847958b37e8a94c211, type: 3}
 --- !u!1 &1544626677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,16 +1722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  unitTypes: []
-  enemyUnitTypes: []
-  meleeUnit: {fileID: 1538407554156714, guid: de8a96b4b9b19e74782c5bbf4e8cdbb5, type: 3}
-  rangedUnit: {fileID: 1430682043930404, guid: 51db6c33a260ae44bbc0a6055c8700b5, type: 3}
-  tankUnit: {fileID: 1562622190837322, guid: ab4ef9f64a63fc84b817b464149b816e, type: 3}
-  healerUnit: {fileID: 1239270685352430, guid: f650d06fa1fc743499b4fa91b17f9f19, type: 3}
-  enemyMeleeUnit: {fileID: 1233361812545480, guid: 08f87452ee650c8479242224174bfa8c, type: 3}
-  enemyRangedUnit: {fileID: 1633224609000294, guid: 4c3f2e449522fe64eb64cd3476aed4ad, type: 3}
-  enemyTankUnit: {fileID: 1716085140368864, guid: b2d97ba7bf4f56f45b85157b2b7eafba, type: 3}
-  enemyHealerUnit: {fileID: 1353652469814562, guid: ba22bfa18461d9847958b37e8a94c211, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

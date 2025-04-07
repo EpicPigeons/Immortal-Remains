@@ -315,6 +315,7 @@ MonoBehaviour:
   isMelee: 0
   isSupport: 1
   currentTarget: {fileID: 0}
+  isUICreated: 0
 --- !u!195 &-3182267046455656137
 NavMeshAgent:
   m_ObjectHideFlags: 0

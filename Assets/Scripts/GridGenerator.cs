@@ -5,22 +5,24 @@ using UnityEngine.AI;
 
 public class GridGenerator : MonoBehaviour
 {
-    [SerializeField][Range(6,12)] private int columns = 6;
-    [SerializeField][Range(6,12)] private int rows = 6;
+    [SerializeField][Range(6, 12)] private int columns = 6;
+    [SerializeField][Range(6, 12)] private int rows = 6;
     [SerializeField] private float cellSize = 1f;
     private int allyRows;
     private int enemyRows;
-    [SerializeField] private GameObject cellPrefab;
-    [SerializeField] private Material whiteMat;
-    [SerializeField] private Material blackMat;
+    private GameObject cellPrefab;
+    // [SerializeField] private Material whiteMat;
+    // [SerializeField] private Material blackMat;
+    [SerializeField] private GameObject whiteCell;
+    [SerializeField] private GameObject blackCell;
     private List<Cell> allCells;
     private GameManager gm;
     [SerializeField] private NavMeshSurface navSurface;
 
     void Awake()
     {
-        allyRows = rows/2;
-        enemyRows = rows/2;
+        allyRows = rows / 2;
+        enemyRows = rows / 2;
         allCells = new List<Cell>();
     }
     void Start()
@@ -38,6 +40,11 @@ public class GridGenerator : MonoBehaviour
         {
             for (int x = 0; x < columns; x++)
             {
+                if ((x + z) % 2 == 0)
+                    cellPrefab = whiteCell;
+                else
+                    cellPrefab = blackCell;
+
                 Vector3 offset = new Vector3(columns * cellSize, 0, rows * cellSize) * 0.5f;
                 Vector3 position = new Vector3(x * cellSize, 0, z * cellSize) - offset;
 
@@ -45,10 +52,6 @@ public class GridGenerator : MonoBehaviour
                 cell.name = $"Cell_{x}_{z}";
 
                 Renderer renderer = cell.GetComponent<Renderer>();
-                if ((x + z) % 2 == 0)
-                    renderer.material = whiteMat;
-                else
-                    renderer.material = blackMat;
 
                 Cell cellScript = cell.GetComponent<Cell>();
                 if (cellScript != null)

@@ -62,12 +62,11 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            int randomIndex = Random.Range(0, gm.UnitTypes.Length);
-            GameObject spawnedEnemyUnit = gm.UnitTypes[randomIndex];
+            GameObject spawnedUnit = gm.EnemyUnitTypes[Mathf.RoundToInt(Random.Range(0, gm.UnitTypes.Length))];
             
-            spawnedEnemyUnit.GetComponent<Renderer>().material = gm.EnemyMaterial;
+            spawnedUnit.GetComponent<Renderer>().material = gm.EnemyMaterial;
 
-            enemyCells[i].SpawnUnit(spawnedEnemyUnit, true);
+            enemyCells[i].SpawnUnit(spawnedUnit, true);
         }
 
         Debug.Log($"Spawned {spawnCount} enemy units.");

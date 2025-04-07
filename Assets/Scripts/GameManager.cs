@@ -24,11 +24,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] unitTypes;
     public GameObject[] UnitTypes { get { return unitTypes; } set { unitTypes = value; } }
+    [SerializeField] private GameObject[] enemyUnitTypes;
+    public GameObject[] EnemyUnitTypes { get { return enemyUnitTypes; } set { enemyUnitTypes = value; } }
     private int unitNum = 0;
+    [SerializeField] private GameObject meleeUnit;
+    [SerializeField] private GameObject rangedUnit;
+    [SerializeField] private GameObject tankUnit;
+    [SerializeField] private GameObject healerUnit;
+    [SerializeField] private GameObject enemyMeleeUnit;
+    [SerializeField] private GameObject enemyRangedUnit;
+    [SerializeField] private GameObject enemyTankUnit;
+    [SerializeField] private GameObject enemyHealerUnit;
 
     // TODO: Reduce the getter and setter calls later after confirming which ones are absolutely necessary and which ones can be sent through argument
     void Awake()
     {
+        unitTypes = new GameObject[] { meleeUnit, rangedUnit, tankUnit, healerUnit };
+        enemyUnitTypes = new GameObject[] { enemyMeleeUnit, enemyRangedUnit, enemyTankUnit, enemyHealerUnit };
         currentUnitPrefab = unitTypes[0];
         unitCount = 0;
     }
@@ -44,7 +56,7 @@ public class GameManager : MonoBehaviour
     void ToggleUnitType()
     {
         unitNum++;
-        if(unitNum == unitTypes.Length)
+        if (unitNum == unitTypes.Length)
         {
             unitNum = 0;
         }

@@ -26,6 +26,10 @@ public class CanvasGenerator : MonoBehaviour
             Debug.LogWarning("Unit UI preafab or Canvas Parent is not existing");
             return;
         }
+        if (unit.isUICreated)
+        {
+            return;
+        }
 
         GameObject uiObject = Instantiate(unitUIPrefab, canvasParent);
         UnitUI unitUI = uiObject.GetComponent<UnitUI>();
@@ -37,6 +41,7 @@ public class CanvasGenerator : MonoBehaviour
         {
             Debug.LogError("Generated UI prefab does not contain UnitUI component");
         }
+        unit.isUICreated = true;
     }
 
 

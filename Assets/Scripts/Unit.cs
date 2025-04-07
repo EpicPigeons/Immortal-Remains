@@ -44,6 +44,8 @@ public class Unit : MonoBehaviour
     [SerializeField] private bool isSupport;
     [SerializeField] private Unit currentTarget;
 
+    public bool isUICreated = false;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

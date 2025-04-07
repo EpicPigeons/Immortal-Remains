@@ -1577,7 +1577,6 @@ GameObject:
   - component: {fileID: 1973058043}
   - component: {fileID: 1973058042}
   - component: {fileID: 1973058045}
-  - component: {fileID: 1973058044}
   m_Layer: 5
   m_Name: BottomPanel
   m_TagString: Untagged
@@ -1642,20 +1641,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973058040}
   m_CullTransparentMesh: 1
---- !u!114 &1973058044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973058040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60ba5ab2dae64045b8a293547e2c480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitUIPrefab: {fileID: 6958156479203552981, guid: 1c0436b1f5381f04ba26c80d4503c07f, type: 3}
-  canvasParent: {fileID: 0}
 --- !u!114 &1973058045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,15 +1654,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
+    m_Left: 95
     m_Right: 5
     m_Top: 15
     m_Bottom: 15
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildAlignment: 3
+  m_Spacing: 150
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
